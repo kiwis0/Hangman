@@ -146,7 +146,8 @@ def displaysBoards(hangmanPics, missedLetters, correctLetters, secretWord):
 
 def playAgain():
     choice = input('Would you like to play again? (yes/no) ==>')
-    return input().lower().startswith('y')
+    print('')
+    return choice.lower().startswith('y')
 
 
 startsGame()
@@ -159,7 +160,7 @@ gameIsOver = False
 while True:
     displaysBoards(hangmanPics, missedLetters, correctLetters, secretWord)
     print('\n')
-    
+    #print(secretWord)
     guess = getGuess(missedLetters + correctLetters)
     
     if isGuessRight(secretWord, guess):
@@ -172,35 +173,26 @@ while True:
                 youWon = False
                 break
         if youWon:
-            displaysBoards(hangmanPics, missedLetters, correctLetters, secretWord)
             print('\n' + 'Congratulations! The word is ' + secretWord+'.')
-            gameIsover = True
+            gameIsOver = True
     else:
         missedLetters = missedLetters + guess
         
-    if len(missedLetters) == 7:
-        displaysBoards(hangmanPics, missedLetters, correctLetters, secretWord)
-        print('You Lose! You Died!\n' + 'The word was ' + secretWord)
-        gameIsOver = True
+        if len(missedLetters) == 7:
+            displaysBoards(hangmanPics, missedLetters, correctLetters, secretWord)
+            print('You Lose! You Died!\n' + 'The word was ' + secretWord)
+            gameIsOver = True
     
     if gameIsOver:
+        #print('it worked')
         if playAgain():
             startsGame()
             missedLetters = ''
             correctletters = ''
-            secretWord = getsWord()
             gameIsOver = False
+            secretWord = getsWord()
         else:
             break
-        
-
-     
-        
-    
-        
-        
-    
-    
     
 
 
