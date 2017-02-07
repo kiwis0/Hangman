@@ -1,6 +1,5 @@
 '''
 Created on Sep 15, 2016
-
 @author: kiwis
 '''
 import theDictionary, random
